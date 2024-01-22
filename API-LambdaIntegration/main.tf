@@ -117,13 +117,6 @@ module "api_gateway" {
 
   }
 
-  body = templatefile("api.yaml", {
-    example_function_arn = module.lambda_function.lambda_function_arn
-  })
-
-  tags = {
-    Name = "dev-api-new"
-  }
 }
 
 module "api_gateway_lambda_integration" {
