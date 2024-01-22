@@ -16,28 +16,7 @@ module "api_gateway" {
     allow_methods = ["*"]
     allow_origins = ["*"]
   }
-  # domain_name                 = local.domain_name
-  # domain_name_certificate_arn = module.acm.acm_certificate_arn
-
-  default_stage_access_log_destination_arn = aws_cloudwatch_log_group.logs.arn
-  default_stage_access_log_format          = "$context.identity.sourceIp - - [$context.requestTime] \"$context.httpMethod $context.routeKey $context.protocol\" $context.status $context.responseLength $context.requestId $context.integrationErrorMessage"
-
-  default_route_settings = {
-    detailed_metrics_enabled = true
-    throttling_burst_limit   = 100
-    throttling_rate_limit    = 100
-  }
-
-  authorizers = {
-    "cognito" = {
-      authorizer_type  = "JWT"
-      identity_sources = "$request.header.Authorization"
-      name             = "cognito"
-      audience         = ["d6a38afd-45d6-4874-d1aa-3c5c558aqcc2"]
-      issuer           = "https://${aws_cognito_user_pool.this.endpoint}"
-    }
-  }
-
+ 
   integrations = {
 
     "ANY /" = {
