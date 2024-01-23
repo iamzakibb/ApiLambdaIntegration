@@ -1,6 +1,6 @@
 variable "function_name" {
   type = string
-  default = ""
+  default = "FirstFunction"
   description = "Name of the existing lambda function"
 }
 
@@ -8,6 +8,6 @@ variable "function_name" {
 # Default AWS Region used to deploy resources
 # ----------------------------------------------------------------------
 variable "aws_region" {
-  default = "us-east-1"
+  default = "us-east-2"
 }
 

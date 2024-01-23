@@ -1,23 +1,29 @@
 variable "region" {
   description = "The region into which to deploy the API Gateway Lambda integration."
+  default = "us-east-2"
 }
 
-variable "component" {
-  description = "The component for which the API Gateway Lambda integration is being managed."
-}
-variable "deployment_identifier" {
-  description = "An identifier for this instantiation."
-}
+# variable "component" {
+#   description = "The component for which the API Gateway Lambda integration is being managed."
+# }
+
+
+# variable "deployment_identifier" {
+#   description = "An identifier for this instantiation."
+# }
 
 variable "lambda_function_name" {
   description = "The name of the Lambda function to integrate from the API Gateway REST API."
+  default = "FirstFunction"
 }
 
 variable "api_gateway_rest_api_id" {
   description = "The ID of the API gateway REST API for which this Lambda integration is being managed."
+  default = module.api_gateway.id
 }
 variable "api_gateway_rest_api_root_resource_id" {
   description = "The ID of the API Gateway REST API's root resource."
+  default =module.api_gateway.root_resource_id
 }
 
 variable "api_gateway_resource_definitions" {
